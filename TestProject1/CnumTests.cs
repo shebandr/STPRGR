@@ -51,7 +51,7 @@ namespace STPRGR
             Assert.AreEqual(2.2, result.GetReal(), 0.0001);
             Assert.AreEqual(-0.4, result.GetIm(), 0.0001);
         }
-
+        
         [TestMethod]
         public void TestMdl()
         {
@@ -82,21 +82,25 @@ namespace STPRGR
         [TestMethod]
         public void TestPwr()
         {
-            CNum a = new CNum(1, 1);
-            a.Pwr(2, 0);
+			CNum a = new CNum(1, 1);
+			CNum b = new CNum(2, 0);
 
-            Assert.AreEqual(0, a.GetReal(), 0.0001);
-            Assert.AreEqual(2, a.GetIm(), 0.0001);
+			CNum c = CNum.Pwr(a, b);
+
+			Assert.AreEqual(0, c.GetReal(), 0.0001);
+            Assert.AreEqual(2, c.GetIm(), 0.0001);
         }
 
         [TestMethod]
         public void TestRoot()
         {
-            CNum a = new CNum(1, 1);
-            a.Root(2, 0);
+			CNum a = new CNum(1, 1);
+			CNum b = new CNum(2, 0);
 
-            Assert.AreEqual(1.0987, a.GetReal(), 0.0001);
-            Assert.AreEqual(0.4551, a.GetIm(), 0.0001);
+			CNum c = CNum.Root(a, b);
+
+            Assert.AreEqual(1.0987, c.GetReal(), 0.0001);
+            Assert.AreEqual(0.4551, c.GetIm(), 0.0001);
         }
     }
 }

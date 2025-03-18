@@ -75,19 +75,19 @@ namespace STPRGR
             Info = "Работа выполнена\nстудентом ИП-112 \nШебановым Андреем\nГеоргиевичем";
         }
 
-        private void Exit(object parameter)
+		internal void Exit(object parameter)
         {
 //            STPRGR.Current.Shutdown();
         }
 
-        private void ShowHistory(object parameter)
+		internal void ShowHistory(object parameter)
         {
             // Логика для отображения истории
             var historyWindow = new UniversalWindow(History);
             historyWindow.ShowDialog();
         }
 
-        private void ShowInfo(object parameter)
+		internal void ShowInfo(object parameter)
         {
             // Логика для отображения справки
             var infoWindow = new UniversalWindow(Info);
@@ -106,7 +106,7 @@ namespace STPRGR
 		private RelayCommand addSymbolCommand;
 		public ICommand AddSymbolCommand => addSymbolCommand ??= new RelayCommand(AddSymbol);
 
-		private void AddSymbol(object commandParameter)
+		internal void AddSymbol(object commandParameter)
 		{
 
             Debug.WriteLine(commandParameter.ToString());
@@ -191,7 +191,7 @@ namespace STPRGR
 		}
 
 
-		private void Calculate(object commandParameter)
+		internal void Calculate(object commandParameter)
 		{
 			Debug.WriteLine(commandParameter.ToString());
 			switch (commandParameter.ToString())
@@ -326,7 +326,7 @@ namespace STPRGR
 						}
 					}
 					break;
-				case ".":
+				case "/":
 					{
 						if (CheckInput(InputText))
 						{
@@ -341,7 +341,7 @@ namespace STPRGR
 							{
 								CalcLastOperation();
 							}
-							currentOperation = ".";
+							currentOperation = "/";
 						}
 					}
 					break;
@@ -365,6 +365,45 @@ namespace STPRGR
 					}
 					break;
 
+				case "√":
+					{
+						if (CheckInput(InputText))
+						{
+							if (currentOperation == null || currentOperation == "")
+							{
+								CNum cNum = StringToCNum(InputText);
+								currentDouble = cNum.GetReal();
+								currentIm = cNum.GetIm();
+								InputText = "";
+							}
+							else
+							{
+								CalcLastOperation();
+							}
+							currentOperation = "√";
+						}
+					}
+					break;
+
+				case "^":
+					{
+						if (CheckInput(InputText))
+						{
+							if (currentOperation == null || currentOperation == "")
+							{
+								CNum cNum = StringToCNum(InputText);
+								currentDouble = cNum.GetReal();
+								currentIm = cNum.GetIm();
+								InputText = "";
+							}
+							else
+							{
+								CalcLastOperation();
+							}
+							currentOperation = "^";
+						}
+					}
+					break;
 
 				case "=":
 
@@ -390,7 +429,7 @@ namespace STPRGR
 			}
 		}
 
-		private void CalcLastOperation()
+		internal void CalcLastOperation()
 		{
 			CNum cNum = StringToCNum(InputText);
 			CNum lastData = new CNum(currentDouble, currentIm);
@@ -409,6 +448,12 @@ namespace STPRGR
 				case "/":
 					newData = CNum.Div(lastData, cNum);
 					break;
+				case "√":
+					newData = CNum.Root(lastData, cNum);
+					break;
+				case "^":
+					newData = CNum.Pwr(lastData, cNum);
+					break;
 			}
 
 
@@ -418,7 +463,7 @@ namespace STPRGR
 			
 
 		}
-		private CNum StringToCNum(string str)
+		internal CNum StringToCNum(string str)
 		{
 			if (str.Contains("."))
 			{
@@ -448,7 +493,7 @@ namespace STPRGR
 
 
 		}
-		private bool CheckInput(string data)
+		internal bool CheckInput(string data)
         {
             if(data == null)
             {

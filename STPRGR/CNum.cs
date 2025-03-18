@@ -18,28 +18,30 @@ namespace STPRGR
         public void SetReal(double r) { real = r; }
         public void SetIm(double i) { im = i; }
 
-        public void Pwr(int n, int i) // возведение самого себя в степень
+		static public CNum Pwr(CNum a, CNum b) // возведение самого себя в степень
         {
-            double modulus = Mdl();
-            double argument = Rad();
+			double modulus = a.Mdl();
+			double argument = a.Rad();
 
-            double newModulus = Math.Pow(modulus, n) * Math.Exp(-i * argument);
-            double newArgument = n * argument + i * Math.Log(modulus);
+			double newModulus = Math.Pow(modulus, b.GetReal()) * Math.Exp(-b.GetIm() * argument);
+            double newArgument = b.GetReal() * argument + b.GetIm() * Math.Log(modulus);
 
-            real = newModulus * Math.Cos(newArgument);
-            im = newModulus * Math.Sin(newArgument);
-        }
+            double real = newModulus * Math.Cos(newArgument);
+			double im = newModulus * Math.Sin(newArgument);
+			return new CNum(real, im);
+		}
 
-        public void Root(int n, int i) // извлечение корня из самого себя
+        static public CNum Root(CNum a, CNum b) // извлечение корня из самого себя
         {
-            double modulus = Mdl();
-            double argument = Rad();
+            double modulus = a.Mdl();
+            double argument = a.Rad();
 
-            double newModulus = Math.Pow(modulus, 1.0 / n);
-            double newArgument = (argument + 2 * Math.PI * i) / n;
+            double newModulus = Math.Pow(modulus, 1.0 / b.GetReal());
+            double newArgument = (argument + 2 * Math.PI * b.GetIm()) / b.GetReal();
 
-            real = newModulus * Math.Cos(newArgument);
-            im = newModulus * Math.Sin(newArgument);
+            double real = newModulus * Math.Cos(newArgument);
+			double im = newModulus * Math.Sin(newArgument);
+            return new CNum(real, im);
         }
 
         public double Mdl() // вычисление модуля самого себя
