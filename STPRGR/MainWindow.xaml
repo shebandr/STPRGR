@@ -5,8 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:STPRGR"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="300" Width="400">
+    <Window.DataContext>
+        <local:MainViewModel />
+    </Window.DataContext>
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Button Command="{Binding ExitCommand}" Margin="5">Выход</Button>
+            <Button Command="{Binding HistoryCommand}" Margin="5">История</Button>
+            <Button Command="{Binding InfoCommand}" Margin="5">Справка</Button>
+            <Label Content="{Binding MemoryLabelText}" />
+        </StackPanel>
+        <TextBox HorizontalContentAlignment="Right" Text="{Binding InputText, UpdateSourceTrigger=PropertyChanged}" Margin="10" />
+        <Grid x:Name="ButtonsGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
 
-    </Grid>
+            <Button Grid.Row="5" Grid.Column="3" Command="{Binding CalculateCommand}" Margin="2">Посчитать</Button>
+        </Grid>
+    </StackPanel>
 </Window>
