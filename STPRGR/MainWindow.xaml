@@ -1,10 +1,7 @@
 ﻿<Window x:Class="STPRGR.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:STPRGR"
-        mc:Ignorable="d"
         Title="MainWindow" Height="300" Width="400">
     <Window.DataContext>
         <local:MainViewModel />
@@ -16,8 +13,10 @@
             <Button Command="{Binding InfoCommand}" Margin="5">Справка</Button>
             <Label Content="{Binding MemoryLabelText}" />
         </StackPanel>
+
         <TextBox HorizontalContentAlignment="Right" Text="{Binding InputText, UpdateSourceTrigger=PropertyChanged}" Margin="10" />
-        <Grid x:Name="ButtonsGrid">
+
+        <Grid x:Name="ButtonsGrid" Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
@@ -31,9 +30,44 @@
                 <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
 
-            <Button Grid.Row="5" Grid.Column="3" Command="{Binding CalculateCommand}" Margin="2">Посчитать</Button>
+            <Button Content="MIn" Command="{Binding CalculateCommand}" CommandParameter="MIn" Grid.Row="0" Grid.Column="0" Margin="2" />
+            <Button Content="MOut" Command="{Binding CalculateCommand}" CommandParameter="MOut" Grid.Row="0" Grid.Column="1" Margin="2" />
+            <Button Content="MClear" Command="{Binding CalculateCommand}" CommandParameter="MClear" Grid.Row="0" Grid.Column="2" Margin="2" />
+
+
+            <Button Content="C" Command="{Binding CalculateCommand}" CommandParameter="C" Grid.Row="1" Grid.Column="0" Margin="2" />
+            <Button Content="CE" Command="{Binding CalculateCommand}" CommandParameter="CE" Grid.Row="1" Grid.Column="1" Margin="2" />
+            <Button Content="Deg" Command="{Binding CalculateCommand}" CommandParameter="Deg" Grid.Row="1" Grid.Column="2" Margin="2" />
+            <Button Content="Rad" Command="{Binding CalculateCommand}" CommandParameter="Rad" Grid.Row="1" Grid.Column="3" Margin="2" />
+
+            <Button Content="√" Command="{Binding CalculateCommand}" CommandParameter="√" Grid.Row="2" Grid.Column="0" Margin="2" />
+            <Button Content="^" Command="{Binding CalculateCommand}" CommandParameter="^" Grid.Row="2" Grid.Column="1" Margin="2" />
+            <Button Content="*" Command="{Binding CalculateCommand}" CommandParameter="*" Grid.Row="2" Grid.Column="2" Margin="2" />
+            <Button Content="/" Command="{Binding CalculateCommand}" CommandParameter="/" Grid.Row="2" Grid.Column="3" Margin="2" />
+
+            <Button Content="1" Command="{Binding AddSymbolCommand}" CommandParameter="1" Grid.Row="3" Grid.Column="0" Margin="2" />
+            <Button Content="2" Command="{Binding AddSymbolCommand}" CommandParameter="2" Grid.Row="3" Grid.Column="1" Margin="2" />
+            <Button Content="3" Command="{Binding AddSymbolCommand}" CommandParameter="3" Grid.Row="3" Grid.Column="2" Margin="2" />
+
+            <Button Content="4" Command="{Binding AddSymbolCommand}" CommandParameter="4" Grid.Row="4" Grid.Column="0" Margin="2" />
+            <Button Content="5" Command="{Binding AddSymbolCommand}" CommandParameter="5" Grid.Row="4" Grid.Column="1" Margin="2" />
+            <Button Content="6" Command="{Binding AddSymbolCommand}" CommandParameter="6" Grid.Row="4" Grid.Column="2" Margin="2" />
+            <Button Content="+" Command="{Binding CalculateCommand}" CommandParameter="+" Grid.Row="3" Grid.Column="3" Margin="2" />
+
+            <Button Content="7" Command="{Binding AddSymbolCommand}" CommandParameter="7" Grid.Row="5" Grid.Column="0" Margin="2" />
+            <Button Content="8" Command="{Binding AddSymbolCommand}" CommandParameter="8" Grid.Row="5" Grid.Column="1" Margin="2" />
+            <Button Content="9" Command="{Binding AddSymbolCommand}" CommandParameter="9" Grid.Row="5" Grid.Column="2" Margin="2" />
+            <Button Content="-" Command="{Binding CalculateCommand}" CommandParameter="-" Grid.Row="4" Grid.Column="3" Margin="2" />
+
+            <Button Content="." Command="{Binding AddSymbolCommand}" CommandParameter="." Grid.Row="6" Grid.Column="0" Margin="2" />
+            <Button Content="0" Command="{Binding AddSymbolCommand}" CommandParameter="0" Grid.Row="6" Grid.Column="1" Margin="2" />
+            <Button Content="i" Command="{Binding AddSymbolCommand}" CommandParameter="i" Grid.Row="6" Grid.Column="2" Margin="2" />
+            <Button Content="Mod" Command="{Binding CalculateCommand}" CommandParameter="Mod" Grid.Row="5" Grid.Column="3" Margin="2" />
+
+            <Button Content="=" Command="{Binding CalculateCommand}" CommandParameter="=" Grid.Row="6" Grid.Column="3" Margin="2 " />
         </Grid>
     </StackPanel>
 </Window>

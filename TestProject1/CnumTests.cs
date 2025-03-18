@@ -13,7 +13,7 @@ namespace STPRGR
         {
             CNum a = new CNum(3, 4);
             CNum b = new CNum(1, 2);
-            CNum result = a.Sum(a, b);
+            CNum result = CNum.Sum(a, b);
 
             Assert.AreEqual(4, result.GetReal());
             Assert.AreEqual(6, result.GetIm());
@@ -24,7 +24,7 @@ namespace STPRGR
         {
             CNum a = new CNum(3, 4);
             CNum b = new CNum(1, 2);
-            CNum result = a.Mult(a, b);
+            CNum result = CNum.Mult(a, b);
 
             Assert.AreEqual(-5, result.GetReal());
             Assert.AreEqual(10, result.GetIm());
@@ -35,7 +35,7 @@ namespace STPRGR
         {
             CNum a = new CNum(3, 4);
             CNum b = new CNum(1, 2);
-            CNum result = a.Sub(a, b);
+            CNum result = CNum.Sub(a, b);
 
             Assert.AreEqual(2, result.GetReal());
             Assert.AreEqual(2, result.GetIm());
@@ -46,7 +46,7 @@ namespace STPRGR
         {
             CNum a = new CNum(3, 4);
             CNum b = new CNum(1, 2);
-            CNum result = a.Div(a, b);
+            CNum result = CNum.Div(a, b);
 
             Assert.AreEqual(2.2, result.GetReal(), 0.0001);
             Assert.AreEqual(-0.4, result.GetIm(), 0.0001);
@@ -65,7 +65,7 @@ namespace STPRGR
         public void TestCnr()
         {
             CNum a = new CNum(1, 1);
-            double result = a.Cnr();
+            double result = a.Deg();
 
             Assert.AreEqual(45, result, 0.0001);
         }
@@ -74,7 +74,7 @@ namespace STPRGR
         public void TestCnrad()
         {
             CNum a = new CNum(1, 1);
-            double result = a.Cnrad();
+            double result = a.Rad();
 
             Assert.AreEqual(Math.PI / 4, result, 0.0001);
         }
