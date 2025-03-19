@@ -460,9 +460,9 @@ namespace STPRGR
 
 			currentDouble = newData.GetReal();
 			currentIm = newData.GetIm();
-			
+            InputText = "";
 
-		}
+        }
 		internal CNum StringToCNum(string str)
 		{
 			if (str.Contains("."))
